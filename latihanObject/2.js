@@ -23,34 +23,33 @@
 
 function companyMatch(company, user) {
   // Insert your code here
+  let matchJob = 0;
   let counter1 = 0;
   let counter2 = 0;
-  // let output = '';
   for (const key1 in company) {
     for (const key2 in user) {
-      // console.log(company[key1], user[key2]);
       if (company[key1] == user[key2]) {
-        counter1++;
-        // console.log(counter1);
+        matchJob++;
       }
-      // if (typeof(company[key1]) == object) {
-      for (let i = 0; i < company[key1].length; i++) {
-        if (company[key1][i] == user[key2][i]) {
-          counter1++;
+      if (matchJob == 1 && typeof(company[key1]) == 'object' && typeof(user[key2]) == 'object') {
+        for (let i = 0; i < company[key1].length; i++) {
+          counter2 = company[key1].length;
+          if (company[key1][i] == user[key2][i]) {
+            counter1++;
+          }
         }
       }
-      // }
     }
-    console.log(typeof(company[key1]));
-    counter2++;
   }
-  counter1 = (counter1 / counter2) * 100;
-  // console.log(typeof(company.requirement));
-  // console.log(counter1);
+  if (matchJob == 1) {
+    counter1 = (counter1 / counter2) * 100;
+  } else {
+    counter1 = 0;
+  }
   if (counter1 > 60) {
-    return `Selamat ${user.name} anda cocok dengan perusahaan ${company.name} dengan persentase kecocokan ${counter1}%`
+    return `Selamat ${user.name} anda cocok dengan perusahaan ${company.name} dengan persentase kecocokan ${Math.floor(counter1)}%`
   }
-  return `Mohon maaf ${user.name} anda belum cocok dengan perusaahan ${company.name} anda hanya mendapatkan persentase kecocokan ${counter1}%`
+  return `Mohon maaf ${user.name} anda belum cocok dengan perusaahan ${company.name} anda hanya mendapatkan persentase kecocokan ${Math.floor(counter1)}%`
 }
 
 
@@ -79,5 +78,5 @@ const marry = {
 }
 
 console.log(companyMatch(company1, john)) // Selamat John anda cocok dengan perusahaan Pesbok dengan persentase kecocokan 100%
-// console.log(companyMatch(company1, kosasih)) // Mohon maaf Kosasih anda belum cocok dengan perusaahan Pesbok anda hanya mendapatkan persentase kecocokan 0%
-// console.log(companyMatch(company1, marry)) // Selamat Marry anda cocok dengan perusahaan Pesbok dengan persentase kecocokan 66% 
+console.log(companyMatch(company1, kosasih)) // Mohon maaf Kosasih anda belum cocok dengan perusaahan Pesbok anda hanya mendapatkan persentase kecocokan 0%
+console.log(companyMatch(company1, marry)) // Selamat Marry anda cocok dengan perusahaan Pesbok dengan persentase kecocokan 66% 

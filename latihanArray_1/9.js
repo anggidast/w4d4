@@ -42,6 +42,26 @@ output: [1, 0, 1]
 
 function arrayMapper(targetArr, operator, effect) {
   // only write code here
+  let result = [];
+  for (let i = 0; i < targetArr.length; i++) {
+    switch (operator) {
+      case '+':
+        result.push(targetArr[i] + effect)
+        break;
+      case '/':
+        result.push(targetArr[i] / effect)
+        break;
+      case '-':
+        result.push(targetArr[i] - effect)
+        break;
+      case '===':
+        result.push(targetArr[i] === effect)
+        break;
+      default:
+        break;
+    }
+  }
+  return result;
 }
 
 console.log(arrayMapper([1, 5, 3, 4], '+', 1)); // [2, 6, 4, 5]

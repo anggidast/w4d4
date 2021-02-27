@@ -14,6 +14,27 @@ output: ikan indosiar, dan ikan bandeng
 */
 
 function fishFilter(fishes) {
+  let result = '';
+  let arr = [];
+  for (let i = 0; i < fishes.length; i++) {
+    let fish = fishes[i][0] + fishes[i][1] + fishes[i][2] + fishes[i][3];
+    if (fish == 'ikan') {
+      arr.push(fishes[i]);
+    }
+  }
+  if (arr.length == 0) {
+    return 'tidak ada data';
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      if (i < arr.length - 1) {
+        result += `${arr[i]}, `;
+      } else {
+        result += `dan ${arr[i]}`;
+      }
+    }
+  }
+  // console.log(arr);
+  return result;
 }
 
 // TEST CASES

@@ -39,4 +39,35 @@ Output :
   },
 }
 
-*/ 
+*/
+
+function battleStats(arr) {
+  let result = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (result[arr[i][0]] == undefined) {
+      result[arr[i][0]] = {
+        "Kalah": 0,
+        "Menang": 0
+      };
+    }
+    if (arr[i][1] < 0) {
+      result[arr[i][0]].Kalah -= arr[i][1];
+    } else if (arr[i][1] > 0) {
+      result[arr[i][0]].Menang += arr[i][1];
+    }
+  }
+  return result;
+}
+
+let battle = [
+  ["Hwang Shi Mok", -1],
+  ["Savants", 1],
+  ["Hwang Shi Mok", 2],
+  ["Hwang Shi Mok", 1],
+  ["Savants", 5],
+  ["Legolas", 10],
+  ["Legolas", -20],
+  ["Legolas", -10],
+]
+
+console.log(battleStats(battle))
